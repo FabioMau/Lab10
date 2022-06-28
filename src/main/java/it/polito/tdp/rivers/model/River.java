@@ -6,7 +6,7 @@ import java.util.List;
 public class River {
 	private int id;
 	private String name;
-	private double flowAvg;
+	private Double flowAvg;
 	private List<Flow> flows;
 	
 	public River(int id) {
@@ -35,6 +35,12 @@ public class River {
 	}
 	
 	public double getFlowAvg() {
+		if(flowAvg != null)
+			return flowAvg;
+		flowAvg = 0.0;
+		for(Flow f : flows) 
+			flowAvg += f.getFlow();
+		flowAvg /= flows.size();
 		return flowAvg;
 	}
 
